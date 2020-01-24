@@ -4,9 +4,17 @@ use libs\system\Controller;
 use src\model\UserDB;
 class UserController extends Controller
 {
-    public function add()
+    public function login()
     {
-        return $this->view->load("roles/add");
+        return $this->view->load("login/login");
+    }
+    public function admin()
+    {
+        $header     =   $this->view->load("assets/header");
+        $sideBar    =   $this->view->load("assets/sideBar");
+        $topBar     =   $this->view->load("assets/topBar");
+        $dashboard  =   $this->view->load("assets/dashboard");
+        $footer     =   $this->view->load("assets/footer");
     }
     public function getAll()
     {
@@ -18,7 +26,5 @@ class UserController extends Controller
     {
         echo $id;
     }
-    public function login()
-    {
-    }
+   
 }

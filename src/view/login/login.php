@@ -33,7 +33,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" method="POST" action="<?php echo '' ?>">
+				<form class="login100-form validate-form" method="POST" action="User/admin">
 					<span class="login100-form-title p-b-26">
 						CONNEXION
 					</span>
