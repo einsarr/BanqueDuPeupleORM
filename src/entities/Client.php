@@ -5,7 +5,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 * @ORM\Entity()
 * @ORM\Table(name="client")
 */
-class User
+class Client
 {
     /**
     * @ORM\Id()

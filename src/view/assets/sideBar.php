@@ -31,12 +31,12 @@
 <li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
     <i class="fas fa-fw fa-cog"></i>
-    <span>Régions</span>
+    <span>Compte</span>
   </a>
   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item" href="<?php echo $base_url.'Region/add' ?>">Ajouter</a>
-      <a class="collapse-item" href="<?php echo $base_url.'Region/index' ?>">Lister</a>
+      <a class="collapse-item" href="<?php echo $base_url.'Compte/add' ?>">Ajouter</a>
+      <a class="collapse-item" href="<?php echo $base_url.'Compte/index' ?>">Lister</a>
     </div>
   </div>
 </li>
@@ -45,12 +45,12 @@
 <li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
     <i class="fas fa-fw fa-wrench"></i>
-    <span>Départements</span>
+    <span>Clients</span>
   </a>
   <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-    <a class="collapse-item" href="<?php echo $base_url.'Departement/add' ?>">Ajouter</a>
-      <a class="collapse-item" href="<?php echo $base_url.'Departement/index' ?>">Lister</a>
+    <a class="collapse-item" href="<?php echo $base_url.'Client/add' ?>">Ajouter</a>
+      <a class="collapse-item" href="<?php echo $base_url.'Client/index' ?>">Lister</a>
     </div>
   </div>
 </li>

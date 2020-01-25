@@ -18,7 +18,7 @@ class View
                 if(file_exists($file))
                 {
                     //Base url
-                    $base_url = "http://localhost:8080/mesprojets/orm/";
+                    $base_url = "http://localhost:8080/mesprojets/banquedupeupleORM/";
                     require_once $file;
                 }else{
                     die($file." n'existe pas comme vue");
@@ -29,7 +29,7 @@ class View
                 if(file_exists($file))
                 {
                     //Base url
-                    $base_url = "http://localhost:8080/mesprojets/orm/";
+                    $base_url = "http://localhost:8080/mesprojets/banquedupeupleORM/";
                     $data = $args[1];
                     require_once $file;
                 }else{
