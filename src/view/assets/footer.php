@@ -48,48 +48,87 @@
 <script>
 var base_url = "<?php echo $base_url; ?>";
   $(document).ready(function(){
-    $('#insert').click(function(event){
-          event.preventDefault();
+    $('#insert').click(function(){
+          var res = validate();
+          if (res == false) {
+              return false;
+          }
           $.ajax({
-              url:base_url+"Region/save",
+              url:base_url+"Compte/save",
               method:"post",
               data: $('form').serialize(),
               dataType:"text",
               success:function(strMessage){
+                  $('#myModal').modal('hide');
                   $('#message').text(strMessage);
+              },
+              error: function (errormessage) {
+                  alert(errormessage.responseText);
               }
           });
       });  
 
-    
-    $('#insertD').click(function(event){
-          event.preventDefault();
-          $.ajax({
-              url:base_url+"Departement/save",
-              method:"post",
-              data: $('form').serialize(),
-              dataType:"text",
-              success:function(strMessage){
-                  $('#message').text(strMessage);
-              }
-          });
-      });
-
-      $('#region').change(function(){
-			var id_region = $(this).val();
-			$.ajax({
-				url:base_url+"Departement/listerDepartement/"+id_region,
-				method:"POST",
-				data:{id_region:id_region},
-				dataType:"text",
-				success:function(data)
-				{
-        alert(data);
-					$('#departement').html(data);
-				}
-			});
-		});
-
-
   })
-  </script>
+  //Valdidation using jquery
+function validate() {
+    var isValid = true;
+    if ($('#nom').val().trim() == "") {
+        $('#nom').css('border-color', 'Red');
+        isValid = false;
+    }
+    else {
+        $('#nom').css('border-color', 'lightgrey');
+    }
+    if ($('#prenom').val().trim() == "") {
+        $('#prenom').css('border-color', 'Red');
+        isValid = false;
+    }
+    else {
+        $('#prenom').css('border-color', 'lightgrey');
+    }
+    if ($('#telephone').val().trim() == "") {
+        $('#telephone').css('border-color', 'Red');
+        isValid = false;
+    }
+    else {
+        $('#telephone').css('border-color', 'lightgrey');
+    }
+    if ($('#email').val().trim() == "") {
+        $('#email').css('border-color', 'Red');
+        isValid = false;
+    }
+    else {
+        $('#email').css('border-color', 'lightgrey');
+    }
+    if ($('#adresse').val().trim() == "") {
+        $('#adresse').css('border-color', 'Red');
+        isValid = false;
+    }
+    else {
+        $('#adresse').css('border-color', 'lightgrey');
+    }
+    if ($('#solde').val().trim() == "") {
+        $('#solde').css('border-color', 'Red');
+        isValid = false;
+    }
+    else {
+        $('#solde').css('border-color', 'lightgrey');
+    }
+    if ($('#numero').val().trim() == "") {
+        $('#numero').css('border-color', 'Red');
+        isValid = false;
+    }
+    else {
+        $('#numero').css('border-color', 'lightgrey');
+    }
+    if ($('#etat').val().trim() == "") {
+        $('#etat').css('border-color', 'Red');
+        isValid = false;
+    }
+    else {
+        $('#etat').css('border-color', 'lightgrey');
+    }
+    return isValid;
+}
+
+</script>

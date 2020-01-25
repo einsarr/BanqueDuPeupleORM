@@ -1,7 +1,7 @@
 <?php
 namespace src\model;
 use libs\system\Model;
-class ClientDb extends Model
+class UserDb extends Model
 {
     public function findAll()
     {

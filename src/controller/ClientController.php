@@ -22,13 +22,13 @@ class ClientController extends Controller
     }
     public function add()
     {
-        $region = new ClientDb();
+        /*$region = new ClientDb();
         $regions = $region->findAll();
-        
+        */
         $header = $this->view->load("assets/header");
         $side = $this->view->load("assets/sideBar");
         $top = $this->view->load("assets/topBar");
-        $reg = $this->view->load("regions/add",$regions);
+        $reg = $this->view->load("clients/add");
         $footer = $this->view->load("assets/footer");
         $tab = array($header,$side,$top,$reg,$footer);
         return $tab;

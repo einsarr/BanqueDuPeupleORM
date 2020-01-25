@@ -21,28 +21,31 @@ class CompteController extends Controller
     }
     public function add()
     {
-        $compte = new CompteDb();
-        $comptes = $compte->findAll();
+        /*$compte = new CompteDb();
+        $comptes = $compte->findAll();*/
         $header = $this->view->load("assets/header");
         $side = $this->view->load("assets/sideBar");
         $top = $this->view->load("assets/topBar");
-        $reg = $this->view->load("comptes/add",$comptes);
+        $reg = $this->view->load("comptes/add");
         $footer = $this->view->load("assets/footer");
         $tab = array($header,$side,$top,$reg,$footer);
         return $tab;
     }
     public function save()
     {
-        $nomD = $_POST["nomD"];
-        $region_id = $_POST["region_id"];
-        $departement = new CompteDb();
-        $ok = $departement->add($nomD,$region_id);
-        $data="";
-        if($ok != 0){
-            $data = "Ajout réussie avec succès";
-        }else{
-            $data = "Erreur d'ajout";
-        }
+        $nom = $_POST["nom"];
+        $prenom = $_POST["prenom"];
+        $telephone = $_POST["telephone"];
+        $email = $_POST["email"];
+        $adresse = $_POST["adresse"];
+        $numero = $_POST["numero"];
+        $solde = $_POST["solde"];
+        $etat = $_POST["etat"];
+        $compte = new CompteDb();
+        $compte->add($nom,$prenom,$telephone,$email,$adresse,$numero,$solde,$etat);
+        $message = 'Ajout réussie avec succès';
+        echo json_encode($message);
+        
     }
     public function getAll()
     {
@@ -63,48 +66,6 @@ class CompteController extends Controller
         $nom = $_POST["nom"];
         
         return $this->view->load("roles/getAll");
-    }
-
-
-    public function selectionRegion($connect)
-	{
-		$output = '';
-        $region = new RegionDb();
-        $result = $region->findAll();
-		while($row = mysqli_fetch_array($result))
-		{
-			$output .= '<option value="'.$row["idR"].'">'.$row["nomR"].'</option>';
-		}
-		return $output;
-	}
-
-
-    public function selectionDepartement($connect)
-    {
-        $output = '';
-        $departement = new DepartementDb();
-        $result = $departement->findAll();
-        while($row = mysqli_fetch_array($result))
-        {
-            $output .='<div class="col-md-3">';
-            $output .= '<div style="border:1px solid #ccc; padding:20px; margin-bottom:20px;">'.$row["nomD"].'';
-            $output .= '</div>';
-            $output .= '</div>';
-        }
-        return $output;
-    }
-
-    public function listerDepartement($idRegion)
-    {
-        $output = '';
-        $departement = new DepartementDb();
-        $result = $departement->findById($idRegion);
-        $output ='<option value="">---Sélectionner le département ---</option>';
-		while($row = mysqli_fetch_array($result))
-		{
-			$output .= '<option value="'.$row["idD"].'">'.$row["nomD"].'</option>';
-		}
-		echo json_encode($output);
     }
     
 }

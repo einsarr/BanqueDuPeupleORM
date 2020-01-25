@@ -1,7 +1,10 @@
 <?php
 namespace src\model;
+
+use Client;
+use Compte;
 use libs\system\Model;
-class DepartementDb extends Model
+class CompteDb extends Model
 {
     public function findAll()
     {
@@ -9,22 +12,28 @@ class DepartementDb extends Model
                     ->createQuery("SELECT r FROM departement r")
                     ->getResult(); 
     }
-    public function add($nomD,$idRegion)
+    
+    public function add($nom,$prenom,$telephone,$email,$adresse,$numero,$solde,$etat)
     {
-        $departement = new \Departement();
-        $regionDB = new \src\model\RegionDb();
-
-        $region = $regionDB->findById($idRegion);
-        $departement->setNomD($nomD);
-        $departement->setRegion($region);
-        $this->entityManager->persist($departement);
+        $compte = new Compte();
+        $client = new Client();
+        $client->setNom($nom);
+        $client->setPrenom($prenom);
+        $client->setTelephone($telephone);
+        $client->setEmail($email);
+        $client->setAdresse($adresse);
+        $this->entityManager->persist($client);
+        $compte->setNumero($numero);
+        $compte->setSolde($solde);
+        $compte->setEtat($etat);
+        $compte->setClient($client);
+        $this->entityManager->persist($compte);
         $this->entityManager->flush();
-        return  $departement->getIdD();
     }
-    public function findById($idRegion)
+    public function findById($idClient)
     {
         return $this->entityManager
-                    ->createQuery("SELECT d FROM departement d WHERE region_id=$idRegion")
+                    ->createQuery("SELECT c FROM client c WHERE id=$idClient")
                     ->getResult(); 
     }
 }

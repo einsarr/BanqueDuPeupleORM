@@ -1,5 +1,4 @@
 <?php
-//namespace src\controller;
 use libs\system\Controller;
 use src\model\RolesDb;
 

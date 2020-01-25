@@ -17,7 +17,7 @@ $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src/entit
 
 // database configuration parameters
 $conn = array(
-    'dbname'  => 'test_ajax_crud',
+    'dbname'  => 'banquedupeuple',
     'user'    => 'root',
     'password'=>  '',
     'host'    =>  'localhost',
