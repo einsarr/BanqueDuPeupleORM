@@ -47,7 +47,7 @@ class Client
     {
         return $this->id;
     }
-    public function setIdR($id)
+    public function setId($id)
     {
         $this->id = $id;
     }

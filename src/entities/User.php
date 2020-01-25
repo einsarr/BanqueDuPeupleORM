@@ -16,24 +16,12 @@ class User
     /**
     * @ORM\Column(type="string")
     */
-    private $nom;
-    /**
-    * @ORM\Column(type="string")
-    */
-    private $prenom;
-    /**
-    * @ORM\Column(type="string")
-    */
-    private $email;
+    private $login;
     /**
     * @ORM\Column(type="string")
     */
     private $password;
-    /**
-     * One User has many lieux. This is the inverse side.
-     * @ORM\OneToMany(targetEntity="Lieu", mappedBy="user")
-     */
-    private $lieux;
+    
     /**
      * Many Users have Many Roles.
      * @ORM\ManyToMany(targetEntity="Roles", inversedBy="users")
@@ -43,63 +31,35 @@ class User
 
     public function __construct()
     {
-        $this->lieux = new ArrayCollection();
         $this->roles = new ArrayCollection();
     }
-    public function getNom()
+    public function getId()
     {
-        return $this->nom;
-    }
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-    public function getEmail()
-    {
-        return $this->email;
-    }
-    public function getPassword()
-    {
-        return $this->password;
-    }
-    public function getLieux()
-    {
-        return $this->lieux;
-    }
-    public function getRoles()
-    {
-        return $this->roles;
+        return $this->id;
     }
     public function setId($id)
     {
         $this->id = $id;
     }
-    public function setNom($nom)
+    
+    public function getPassword()
     {
-        $this->nom = $nom;
+        return $this->password;
     }
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
-    }
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
+    
     public function setPassword($password)
     {
         $this->password = $password;
     }
-    public function setLieux($lieux)
+
+    public function getRoles()
     {
-        $this->lieux = $lieux;
+        return $this->roles;
     }
+    
     public function setRoles($roles)
     {
         $this->roles = $roles;
     }
-    public function toString()
-    {
-        return "Id : ".$this->id." - Nom : ".$this->nom." - prenom : ".$this->email;
-    }
+    
 }
