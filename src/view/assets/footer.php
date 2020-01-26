@@ -68,8 +68,23 @@ var base_url = "<?php echo $base_url; ?>";
           });
       });  
 
+
+      $('.view_client').click(function(){
+			var id_client = $(this).attr("id");
+			$.ajax({
+				url:base_url+"Client/select/"+id_client,
+				method:"POST",
+				data:{id_client:id_client},
+				success:function(data){
+					$('#client_details').html(data);
+					$('#dataModal').modal("show");
+				}
+			});
+			$('#dataModal').modal("show");
+		});
+
   })
-  //Valdidation using jquery
+  //Validation using jquery
 function validate() {
     var isValid = true;
     if ($('#nom').val().trim() == "") {

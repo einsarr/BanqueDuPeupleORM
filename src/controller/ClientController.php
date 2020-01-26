@@ -15,10 +15,45 @@ class ClientController extends Controller
         $header = $this->view->load("assets/header");
         $side = $this->view->load("assets/sideBar");
         $top = $this->view->load("assets/topBar");
-        $reg = $this->view->load("clients/lister");
+        $reg = $this->view->load("clients/lister",$clients);
         $footer = $this->view->load("assets/footer");
-        $tab = array($header,$side,$top,$reg,$footer,$clients);
+        $tab = array($header,$side,$top,$reg,$footer);
         return $tab;
+    }
+    public function select($idClient){
+        $client = new ClientDb();
+        $cli = $client->findById($idClient);
+        $output='';
+        $output .='
+				<div class="table table-responsive">
+					<table class="table table-bordered">';
+        foreach($cli as $key=>$value)
+        {
+            $output .='
+				<tr>
+					<td width="30%"><label>Nom</label></td>
+					<td width="70%">'.$value->getNom().'</td>
+				</tr>
+				<tr>
+					<td width="30%"><label>Prénom</label></td>
+					<td width="70%">'.$value->getPrenom().'</td>
+				</tr>
+				<tr>
+					<td width="30%"><label>Téléphone</label></td>
+					<td width="70%">'.$value->getTelephone().'</td>
+				</tr>
+				<tr>
+					<td width="30%"><label>Email</label></td>
+					<td width="70%">'.$value->getEmail().'</td>
+				</tr>
+				<tr>
+					<td width="30%"><label>Adresse</label></td>
+					<td width="70%">'.$value->getAdresse().' Year</td>
+				</tr>
+			';
+        }
+        $output .="</table></div>";
+		echo $output; 
     }
     public function add()
     {

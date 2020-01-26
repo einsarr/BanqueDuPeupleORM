@@ -6,13 +6,13 @@ class ClientDb extends Model
     public function findAll()
     {
         return $this->entityManager
-                    ->createQuery("SELECT r FROM region r")
+                    ->createQuery("SELECT cl FROM client cl")
                     ->getResult(); 
     }
-    public function findById($idR)
+    public function findById($idClient)
     {
         return $this->entityManager
-                    ->createQuery("SELECT r FROM region r WHERE r.idR=$idR")
+                    ->createQuery("SELECT cl FROM client cl WHERE cl.id='$idClient'")
                     ->getResult(); 
     }
     public function add($nomR)

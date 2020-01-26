@@ -11,22 +11,24 @@ class CompteController extends Controller
     }
     public function index()
     {
+        $compte = new CompteDb();
+        $comptes = $compte->findAll();
         $header = $this->view->load("assets/header");
         $side = $this->view->load("assets/sideBar");
         $top = $this->view->load("assets/topBar");
-        $reg = $this->view->load("comptes/lister");
+        $reg = $this->view->load("comptes/lister",$comptes);
         $footer = $this->view->load("assets/footer");
         $tab = array($header,$side,$top,$reg,$footer);
         return $tab;
     }
     public function add()
     {
-        /*$compte = new CompteDb();
-        $comptes = $compte->findAll();*/
+        $compte = new CompteDb();
+        $comptes = $compte->findAll();
         $header = $this->view->load("assets/header");
         $side = $this->view->load("assets/sideBar");
         $top = $this->view->load("assets/topBar");
-        $reg = $this->view->load("comptes/add");
+        $reg = $this->view->load("comptes/add",$comptes);
         $footer = $this->view->load("assets/footer");
         $tab = array($header,$side,$top,$reg,$footer);
         return $tab;
