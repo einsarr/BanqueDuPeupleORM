@@ -35,7 +35,6 @@
   </a>
   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <a class="collapse-item" href="<?php echo $base_url.'Compte/add' ?>">Ajouter</a>
       <a class="collapse-item" href="<?php echo $base_url.'Compte/index' ?>">Lister</a>
     </div>
   </div>

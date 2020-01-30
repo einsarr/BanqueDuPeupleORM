@@ -4,6 +4,9 @@
 <div class="container-fluid">
        <!-- DataTales Example -->
        <div class="card shadow mb-4">
+         <div id="message">
+           
+         </div>
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Liste des régions</h6>
             </div>
@@ -16,8 +19,6 @@
                       <th>Nom</th>
                       <th>Prénom</th>
                       <th>Téléphone</th>
-                      <th>Email</th>
-                      <th>Adresse</th>
                       <th>options</th>
                     </tr>
                   </thead>
@@ -28,13 +29,11 @@
                       <td><?php echo $value->getNom() ?></td>
                       <td><?php echo $value->getPrenom() ?></td>
                       <td><?php echo $value->getTelephone() ?></td>
-                      <td><?php echo $value->getEmail() ?></td>
-                      <td><?php echo $value->getAdresse() ?></td>
                       <td>
-                          <a href="<?php echo $base_url."Compte/delete/".$value->getId() ?>" class="btn btn-danger" onclick="return confirm('Etes-vous sûre de vouloir supprimer la région?')"><span class="fas fa-trash"></span></a>
-                          <a href="<?php echo $base_url."Compte/edit/".$value->getId() ?>" class="btn btn-warning"><span class="fas fa-edit"></span></a>
-                          <a href="" id=<?php echo $value->getId() ?>" class="btn btn-info view_client" data-toggle="modal" data-target="#dataModal"><span class="fas fa-eye"></span></a>
-                          <a href="<?php echo $base_url."Compte/addCompte/".$value->getId() ?>" class="btn btn-success" data-toggle="modal" data-target="#myModalAddCompte"><span class="fas fa-plus"></span></a>
+                          <a href="<?php echo $base_url."Client/delete/".$value->getId() ?>" class="btn btn-danger" onclick="return confirm('Etes-vous sûre de vouloir supprimer la région?')"><span class="fas fa-trash"></span></a>
+                          <a href="<?php echo $base_url."Client/edit/".$value->getId() ?>" class="btn btn-warning"><span class="fas fa-edit"></span></a>
+                          <a href="" id="<?php echo $value->getId() ?>" class="btn btn-info view_client" data-toggle="modal" data-target="#dataModal"><span class="fas fa-eye"></span></a>
+                          <a href="<?php echo $base_url."Client/addCompteClient/".$value->getId() ?>" class="btn btn-success"><span class="fas fa-plus"></span></a>
                       </td>
                     </tr>
                     <?php endforeach; ?>
@@ -68,14 +67,14 @@
                   <input type="text" class="form-control" placeholder="Entrez le solde" id="solde" name="solde">
                 </div>
                 <div class="form-group">
-                  <select id="etat" class="form-control" name="etat">
+                  <select id="etatAdd" class="form-control" name="etat">
                   <option value="">--- Selectionner l'état ---</option>  
                       <option value="actif">Activé</option>
                       <option value="Inactif">Désactivé</option>
                   </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="addCompte">Add</button>
+                    <button type="button" class="btn btn-primary" id="addCompteCl">Ajouter</button>
                     <button type="button" class="btn btn-primary" id="btnUpdate"style="display:none;">Update</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
                 </div>

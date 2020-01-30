@@ -82,6 +82,36 @@ var base_url = "<?php echo $base_url; ?>";
 			});
 			$('#dataModal').modal("show");
 		});
+        $('.view_compte').click(function(){
+			var id_compte = $(this).attr("id");
+			$.ajax({
+				url:base_url+"Compte/select/"+id_compte,
+				method:"POST",
+				data:{id_compte:id_compte},
+				success:function(data){
+					$('#compte_details').html(data);
+					$('#dataModal').modal("show");
+				}
+			});
+			$('#dataModal').modal("show");
+		});
+
+        $('.addCompte').click(function(){
+          var idClient = $(this).attr("id");
+          $.ajax({
+              url:base_url+"Compte/saveAdd/"+idClient,
+              method:"post",
+              data: $('form').serialize(),
+              dataType:"text",
+              success:function(strMessage){
+                  $('#myModalAddCompte').modal('hide');
+                  $('#message').text(strMessage);
+              },
+              error: function (errormessage) {
+                  alert(errormessage.responseText);
+              }
+          });
+      });  
 
   })
   //Validation using jquery
@@ -143,7 +173,9 @@ function validate() {
     else {
         $('#etat').css('border-color', 'lightgrey');
     }
+    
     return isValid;
 }
+
 
 </script>

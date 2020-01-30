@@ -9,10 +9,10 @@ class ClientDb extends Model
                     ->createQuery("SELECT cl FROM client cl")
                     ->getResult(); 
     }
-    public function findById($idClient)
+    public function findById($idC)
     {
         return $this->entityManager
-                    ->createQuery("SELECT cl FROM client cl WHERE cl.id='$idClient'")
+                    ->createQuery("SELECT cl FROM client cl WHERE cl.id=$idC")
                     ->getResult(); 
     }
     public function add($nomR)

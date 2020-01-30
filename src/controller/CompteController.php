@@ -21,6 +21,7 @@ class CompteController extends Controller
         $tab = array($header,$side,$top,$reg,$footer);
         return $tab;
     }
+    
     public function add()
     {
         $compte = new CompteDb();
@@ -49,11 +50,50 @@ class CompteController extends Controller
         echo json_encode($message);
         
     }
+    public function saveAdd($idClient)
+    {
+        $numero = $_POST["numero"];
+        $solde = $_POST["solde"];
+        $etat = $_POST["etat"];
+        $compte = new CompteDb();
+        $compte->addCompte($numero,$solde,$etat,$idClient);
+        $message = 'Ajout réussie avec succès';
+        echo json_encode($message);
+    }
     public function getAll()
     {
         $departement = new CompteDb();
         $departements = $departement->findAll();
         return $this->view->load("departements/getAll",$departements);
+    }
+    public function select($idCompte){
+        $compte = new CompteDb();
+        $cpt = $compte->findById($idCompte);
+        $output='';
+        $output .='
+				<div class="table table-responsive">
+					<table class="table table-bordered">';
+        foreach($cpt as $key=>$value)
+        {
+            $output .='
+				<tr>
+					<td width="30%"><label>Numéro</label></td>
+					<td width="70%">'.$value->getNumero().'</td>
+				</tr>
+				<tr>
+					<td width="30%"><label>Solde</label></td>
+					<td width="70%">'.$value->getSolde().'</td>
+				</tr>
+				<tr>
+					<td width="30%"><label>Etat</label></td>
+                    <td width="70%">'
+                        .$value->getEtat().
+                    '</td>
+				</tr>
+			';
+        }
+        $output .="</table></div>";
+		echo $output; 
     }
     public function delete($id)
     {

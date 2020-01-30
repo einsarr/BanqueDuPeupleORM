@@ -9,10 +9,15 @@ class CompteDb extends Model
     public function findAll()
     {
         return $this->entityManager
-                    ->createQuery("SELECT r FROM departement r")
+                    ->createQuery("SELECT cpt FROM compte cpt")
                     ->getResult(); 
     }
-    
+    public function findById($idC)
+    {
+        return $this->entityManager
+                    ->createQuery("SELECT cpt FROM compte cpt WHERE cpt.id=$idC")
+                    ->getResult(); 
+    }
     public function add($nom,$prenom,$telephone,$email,$adresse,$numero,$solde,$etat)
     {
         $compte = new Compte();
@@ -30,10 +35,18 @@ class CompteDb extends Model
         $this->entityManager->persist($compte);
         $this->entityManager->flush();
     }
-    public function findById($idClient)
+    public function addCompte($numero,$solde,$etat,$idClient)
     {
-        return $this->entityManager
-                    ->createQuery("SELECT c FROM client c WHERE id=$idClient")
-                    ->getResult(); 
+        $compte = new Compte();
+        $client = new ClientDB();
+        $cli= $client->findById($idClient);
+        $compte->setNumero($numero);
+        $compte->setSolde($solde);
+        $compte->setEtat($etat);
+        $compte->setClient($cli);
+        $this->entityManager->persist($compte);
+        $this->entityManager->flush();
     }
+    
+   
 }

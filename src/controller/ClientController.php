@@ -1,6 +1,7 @@
 <?php
 use libs\system\Controller;
 use src\model\ClientDb;
+use src\model\CompteDb;
 
 class ClientController extends Controller
 {
@@ -64,6 +65,19 @@ class ClientController extends Controller
         $side = $this->view->load("assets/sideBar");
         $top = $this->view->load("assets/topBar");
         $reg = $this->view->load("clients/add");
+        $footer = $this->view->load("assets/footer");
+        $tab = array($header,$side,$top,$reg,$footer);
+        return $tab;
+    }
+    public function addCompteClient($idClient)
+    {
+        $compte = new CompteDb();
+        $comptes = $compte->findById($idClient);
+        var_dump($comptes);exit(0);
+        $header = $this->view->load("assets/header");
+        $side = $this->view->load("assets/sideBar");
+        $top = $this->view->load("assets/topBar");
+        $reg = $this->view->load("clients/add",$comptes);
         $footer = $this->view->load("assets/footer");
         $tab = array($header,$side,$top,$reg,$footer);
         return $tab;
